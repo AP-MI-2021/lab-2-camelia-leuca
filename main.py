@@ -1,9 +1,9 @@
 def get_largest_prime_below(n):
-    '''
+    """
     Gaseste ultimul numar prim mai mic decat un numar dat.
     :param n:int
     :return: ultimul numar prim mai mic decat numarul dat sau False daca nu exista
-    '''
+    """
     while n > 2:
         ok = True
         n = n - 1
@@ -16,11 +16,11 @@ def get_largest_prime_below(n):
 
 
 def is_palindrome(n):
-    '''
+    """
     Determina daca un numar dat este palindrom.
     :param n:int
     :return:True daca numarul dat este palindrom sau False in caz contrar
-    '''
+    """
     invers = 0
     copie = n
     while n != 0:
@@ -29,6 +29,31 @@ def is_palindrome(n):
     if invers == copie:
         return True
     return False
+
+
+def is_antipalindorme(n):
+    """
+    Determina daca un numar este antipalindrom.
+    :param n: int
+    :return: True daca numarul dat este antipalindrom sau False in caz contrar
+    """
+    copie = n
+    prima_cifra = 1
+    while copie > 9:
+        prima_cifra = prima_cifra * 10
+        copie = copie // 10
+    while n > 9:
+        if n % 10 == n / prima_cifra:
+            return False
+        n = n // 10
+        n = n // prima_cifra
+    return True
+
+
+def test_is_antipalindrome():
+    assert is_antipalindorme(23) == True
+    assert is_antipalindorme(22) == False
+    assert is_antipalindorme(5) == True
 
 
 def test_get_largest_prime_below():
@@ -46,6 +71,7 @@ def main():
     while True:
         print('1.Gaseste ultimul numar prim mai mic decat un numar dat - exercitiul 1.')
         print('2.Determina daca un numar dat este palindrom - exercitiul 5.')
+        print('3.Determina daca un numar dat este antipalindrom - exercitiul 7.')
         print('x.Iesire din program.')
         optiune = input('Alege optiunea: ')
         if optiune == '1':
@@ -56,6 +82,10 @@ def main():
             nr = int(input('Dati numarul: '))
             palindrom = is_palindrome(nr)
             print(palindrom)
+        elif optiune == '3':
+            nr = int(input('Dati numarul: '))
+            antipalindrom = is_antipalindorme(nr)
+            print(antipalindrom)
         elif optiune == 'x':
             break
         else:
@@ -64,4 +94,5 @@ def main():
 
 test_get_largest_prime_below()
 test_is_palindrome()
+test_is_antipalindrome()
 main()
