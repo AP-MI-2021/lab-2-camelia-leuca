@@ -1,7 +1,7 @@
 def get_largest_prime_below(n):
     """
     Gaseste ultimul numar prim mai mic decat un numar dat.
-    :param n:int
+    :param n:un numar intreg
     :return: ultimul numar prim mai mic decat numarul dat sau False daca nu exista
     """
     while n > 2:
@@ -18,7 +18,7 @@ def get_largest_prime_below(n):
 def is_palindrome(n):
     """
     Determina daca un numar dat este palindrom.
-    :param n:int
+    :param n:un numar intreg
     :return:True daca numarul dat este palindrom sau False in caz contrar
     """
     invers = 0
@@ -43,7 +43,7 @@ def is_antipalindorme(n):
         prima_cifra = prima_cifra * 10
         copie = copie // 10
     while n > 9:
-        if n % 10 == n / prima_cifra:
+        if n % 10 == n // prima_cifra:
             return False
         n = n // 10
         n = n // prima_cifra
@@ -51,20 +51,21 @@ def is_antipalindorme(n):
 
 
 def test_is_antipalindrome():
-    assert is_antipalindorme(23) == True
-    assert is_antipalindorme(22) == False
-    assert is_antipalindorme(5) == True
+    assert is_antipalindorme(23) is True
+    assert is_antipalindorme(22) is False
+    assert is_antipalindorme(5) is True
 
 
 def test_get_largest_prime_below():
     assert get_largest_prime_below(6) == 5
     assert get_largest_prime_below(3) == 2
-    assert get_largest_prime_below(1) == False
+    assert get_largest_prime_below(1) is False
 
 
 def test_is_palindrome():
-    assert is_palindrome(55) == True
-    assert is_palindrome(51) == False
+    assert is_palindrome(55) is True
+    assert is_palindrome(51) is False
+    assert is_palindrome(9) is True
 
 
 def main():
